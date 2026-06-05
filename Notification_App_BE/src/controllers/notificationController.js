@@ -20,13 +20,29 @@ exports.createNotification = (req, res) => {
 };
 
 exports.getNotifications = (req, res) => {
-    const userId = Number(req.query.userId);
+    const userId = req.query.userId;
 
-    const result = notifications.filter(
-        n => n.userId === userId
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const filtered = notifications.filter(
+        n => n.userId == userId
     );
 
-    res.json(result);
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+
+    const paginatedData = filtered.slice(
+        startIndex,
+        endIndex
+    );
+
+    res.json({
+        page,
+        limit,
+        totalNotifications: filtered.length,
+        data: paginatedData
+    });
 };
 
 exports.getUnreadNotifications = (req, res) => {
