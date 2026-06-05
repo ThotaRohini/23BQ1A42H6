@@ -1,7 +1,9 @@
 const { v4: uuid } = require("uuid");
 
 const notifications = require("../models/notificationStore");
-
+const {
+    addToQueue
+} = require("../services/notificationQueue");
 exports.createNotification = (req, res) => {
     const notification = {
         id: uuid(),
@@ -16,7 +18,12 @@ exports.createNotification = (req, res) => {
 
     notifications.push(notification);
 
-    res.status(201).json(notification);
+addToQueue(notification);
+
+res.status(201).json({
+    message: "Notification queued successfully",
+    notification
+});
 };
 
 exports.getNotifications = (req, res) => {
