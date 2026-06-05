@@ -1,0 +1,21 @@
+{
+  "name": "23bq1a42h6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThotaRohini/23BQ1A42H6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ThotaRohini/23BQ1A42H6/issues"
+  },
+  "homepage": "https://github.com/ThotaRohini/23BQ1A42H6#readme"
+}
